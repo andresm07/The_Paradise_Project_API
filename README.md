@@ -24,8 +24,8 @@ Express: Librería NodeJS
 
 $ git clone The_Paradise_Project_API.git
 
-$ mpm install 
+$ npm install 
 
 2. Ejecutar aplicación
 
-$ mpm start
+$ npm start
