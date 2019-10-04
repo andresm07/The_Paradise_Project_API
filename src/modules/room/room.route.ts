@@ -21,15 +21,15 @@ export default class Room extends RouteModule {
    * Inits the base routes to be used on router module
    */
   public initBaseRoute(): void {
-    this.baseRoute = '/rooms';
+    this.baseRoute = '/agenda';
   }
 
   /**
    * Inits the api routes to be used on the router module
    */
   public initApiRoutes(): void {
-    this.addRoute('/rooms', HttpVerbs.POST,
-                  Validations.getRoomsValidation, [], 
+    this.addRoute('/eventos', HttpVerbs.POST,
+                  Validations.getRoomsValidation, [],
                   RoomController.getRooms, false);
   }
 

@@ -25,8 +25,8 @@ export default class RootRoute extends RouteModule {
    * Inits the api routes to be root on the router module
    */
   public initApiRoutes(): void {
-
-    this.addRoute('', HttpVerbs.GET, {}, [], (req: Request, res: Response, next: NextFunction) => {
+    this.addRoute('', HttpVerbs.GET, {}, [],
+    (req: Request, res: Response, next: NextFunction) => {
       res.send('OK');
     // tslint:disable-next-line:align
     }, true);

@@ -8,8 +8,7 @@
 import { Logger } from 'akore';
 import express, { Application, Router } from 'express';
 import { RouteModule } from './modules/common/models';
-import {
-  convertToApiException,
+import { convertToApiException,
   notFoundException} from './modules/common/utils';
 
 export default class App {
@@ -67,7 +66,6 @@ export default class App {
   public mount(routeModules: RouteModule[], baseRoute: string): App {
     // const router = Router();
     routeModules.forEach((routeModule: RouteModule) => {
-      Logger.getInstance().verbose(`Registered Route Module: ${baseRoute}${routeModule.baseRoute}`);
       this.router.use(baseRoute, routeModule.getRouter());
     });
     return this;

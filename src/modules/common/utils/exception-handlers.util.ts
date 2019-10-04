@@ -18,7 +18,8 @@ const VALIDATION_ERROR = 'validation error';
  * @param {e.Response} res
  * @param {e.NextFunction} next
  */
-export const convertToApiException = (err: any, req: Request, res: Response, next: NextFunction): void => {
+export const convertToApiException =
+(err: any, req: Request, res: Response, next: NextFunction): void => {
   if (!(err instanceof APIException)) {
     const apiError = new APIException(err.message, err.status);
     if (err.message === VALIDATION_ERROR) {
@@ -35,7 +36,8 @@ export const convertToApiException = (err: any, req: Request, res: Response, nex
  * @param {e.Response} res
  * @param {e.NextFunction} next
  */
-export const notFoundException = (req: Request, res: Response, next: NextFunction): void => {
+export const notFoundException =
+(req: Request, res: Response, next: NextFunction): void => {
   const err = new APIException('Not found', httpStatus.NOT_FOUND);
   return next(err);
 };

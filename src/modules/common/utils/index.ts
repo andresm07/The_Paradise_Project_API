@@ -6,8 +6,9 @@
  */
 
 import { debug, debugMiddleware } from './debug.util';
-import { convertToApiException, notFoundException } from './exception-handlers.util';
-import {SuccessResponse, ErrorResponse, } from './response.util';
+import { convertToApiException,
+        notFoundException } from './exception-handlers.util';
+import { ErrorResponse, SuccessResponse } from './response.util';
 
 export {
   debug,
