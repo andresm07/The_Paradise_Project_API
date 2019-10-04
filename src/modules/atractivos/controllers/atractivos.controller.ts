@@ -30,6 +30,7 @@ export default class AtractivosController {
   public static async getLugares(req: Request, res: Response, next: NextFunction)
   {
     try {
+      // agregar parametro
       const result = await atractivosHelper.getLugares();
       return SuccessResponse(res, result);
     } catch (error) {
@@ -40,6 +41,7 @@ export default class AtractivosController {
   public static async getLugaresxID(req: Request, res: Response, next: NextFunction)
   {
     try {
+      // agregar parametro
       const result = await atractivosHelper.getLugaresxID();
       return SuccessResponse(res, result);
     } catch (error) {

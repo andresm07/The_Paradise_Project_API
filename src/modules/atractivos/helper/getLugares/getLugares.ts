@@ -10,7 +10,7 @@
  * Access to google api to get all rooms
  * @param auth The auth data for access to google api
  */
-const getLugares = async () => {
+const getLugares = async (idDistrito : number) => {
     try {
       // aquí va el llamado a la BD
       return null;
