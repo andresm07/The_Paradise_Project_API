@@ -8,7 +8,7 @@ const state = {
   db : null,
 };
 
-const conect = (cb) => {
+export const conect = (cb) => {
   if (state.db) {
     cb();
   } else {
@@ -23,16 +23,10 @@ const conect = (cb) => {
   }
 };
 
-const getPrimaryKey = (id) => {
+export const getPrimaryKey = (id) => {
   return ObjectID(id);
 };
 
-const getDB = () => {
+export const getDB = () => {
   return state.db;
-};
-
-module.exports = {
-  conect,
-  getDB,
-  getPrimaryKey,
 };
