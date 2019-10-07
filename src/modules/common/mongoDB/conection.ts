@@ -1,7 +1,7 @@
 import { MongoCliente, ObjectID } from 'mongodb';
 const dbname = 'WebParaiso';
 const url =
-'mongodb+srv://kristalduran:kristalduran@webparaiso-fv9eu.mongodb.net/WebParaiso';
+'mongodb://kristalduran:kristalduran@webparaiso-fv9eu.mongodb.net/WebParaiso';
 const mongoOptions = { useNewUrlParser : true };
 
 const state = {
@@ -14,8 +14,10 @@ export const conect = (cb) => {
   } else {
     MongoCliente.connect(url, mongoOptions, (err, cliente) => {
       if (err) {
+        console.log(err);
         cb(err);
       } else {
+        console.log('ok');
         state.db = cliente.db(dbname);
         cb();
       }
