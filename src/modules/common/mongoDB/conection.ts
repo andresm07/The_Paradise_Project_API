@@ -29,6 +29,6 @@ export const getPrimaryKey = (id) => {
   return ObjectID(id);
 };
 
-export const getDB = () => {
+export const getDB: any = () => {
   return state.db;
 };
