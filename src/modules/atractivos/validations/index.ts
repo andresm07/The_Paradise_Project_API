@@ -10,7 +10,7 @@ import getLugaresValidation from './getLugares.validations';
 import getLugaresxIDValidation from './getLugaresxID.validations';
 
 export default {
-    getDistritosValidation,
-    getLugaresValidation,
-    getLugaresxIDValidation,
+  getDistritosValidation,
+  getLugaresValidation,
+  getLugaresxIDValidation,
 };

@@ -5,31 +5,17 @@
  * Description: Index file
  */
 
-import { Logger } from 'akore';
 import bodyparser from 'body-parser';
 import compression from 'compression';
 import cors from 'cors';
-import dotenv from 'dotenv';
-import expressWinston from 'express-winston';
-// import fs from 'fs';
 import helmet from 'helmet';
+
 import App from './app';
+import Atractivos from './modules/Atractivos/atractivos.route';
+import Calendario from './modules/Calendario/calendario.route';
 import RootRoute from './modules/common/root.route';
-import RoomsRoute from './modules/room/room.route';
-
-// enable detailed API logging
-expressWinston.requestWhitelist.push('body');
-expressWinston.responseWhitelist.push('body');
-
-// Configure dotenv for custom process.env variables
-const env = process.env.NODE_ENV || 'local';
-
-if (env === 'local') {
-  const rootDotenvPath = `${process.cwd()}/dotenv.config/`;
-  const path = `${rootDotenvPath}.env.${env}`;
-  Logger.getInstance().verbose(path);
-  dotenv.config({ path });
-}
+import resena from './modules/resena/resena.route';
+import Tramites from './modules/Tramites/tramites.route';
 
 const app = new App('Base Api');
 app
@@ -47,8 +33,8 @@ app
     [new RootRoute()], '',
   )
   .mount(
-    [new RoomsRoute()],
-    '/api/',
+    [new Tramites(), new Atractivos(), new Calendario(), new resena()],
+    '/',
   );
 
 app.serve();

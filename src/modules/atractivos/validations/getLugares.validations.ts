@@ -10,7 +10,7 @@ import { ISchemaValidation } from '../../common/interfaces';
 
 const getLugaresValidation: ISchemaValidation = {
   body: {
-    token: Joi.strict().required(),
+    nameDistrito: Joi.strict().required(),
   },
 };
 export default getLugaresValidation;

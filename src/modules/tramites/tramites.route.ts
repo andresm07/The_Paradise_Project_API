@@ -1,7 +1,7 @@
 /**
- * Filename: event.route.ts
- * Author: 
- * Date: 05/10/2019
+ * Filename: tramites.route.ts
+ * Author: kristalduran@gmail.com
+ * Date: 16/10/2019
  * Description: Room Route Module
  */
 
@@ -29,8 +29,8 @@ export default class Tramites extends RouteModule {
    */
   public initApiRoutes(): void {
     this.addRoute('/tramites', HttpVerbs.POST,
-                  Validations.getPatentesValidation, [],
-                  TramitesController.getPatentes, false),
+                  Validations.getPatentesValidation,
+                  TramitesController.getPatentes);
   }
 
   /**

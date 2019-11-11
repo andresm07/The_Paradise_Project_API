@@ -7,8 +7,9 @@
 
 import { NextFunction, Request, Response } from 'express';
 
+import { ErrorResponse, SuccessResponse } from '../../common/utils';
 import tramitesHelper from '../helper';
-import { SuccessResponse, ErrorResponse } from '../../common/utils';
+
 export default class TramitesController {
   /**
    * Calls method to gets the information about ofices rooms,
@@ -17,8 +18,7 @@ export default class TramitesController {
    * @param {Response} res
    * @param {NextFunction} next
    */
-  public static async getPatentes(req: Request, res: Response, next: NextFunction)
-  {
+  public static async getPatentes(req: Request, res: Response, next: NextFunction) {
     try {
       const result = await tramitesHelper.getPatentes();
       return SuccessResponse(res, result);

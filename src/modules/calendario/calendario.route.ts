@@ -1,7 +1,5 @@
 /**
  * Filename: calendario.route.ts
- * Author: 
- * Date: 04/10/2019
  * Description: Calendario Route Module
  */
 
@@ -29,9 +27,9 @@ export default class Calendario extends RouteModule {
    * Inits the api routes to be used on the router module
    */
   public initApiRoutes(): void {
-    this.addRoute('/calendario', HttpVerbs.POST,
-                  Validations.getEventosValidation, [], 
-                  CalendarioController.getCalendario, false);
+    this.addRoute('/', HttpVerbs.POST,
+                  Validations.getEventosValidation,
+                  CalendarioController.getCalendario);
   }
 
   /**

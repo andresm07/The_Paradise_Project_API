@@ -1,11 +1,11 @@
 /**
  * Filename: index.ts
- * Author: 
- * Date: 05/10/2019
+ * Author:  kristalduran@gmail.com
+ * Date: 16/10/2019
  * Description: Index file for Rooms Schema Validation
  */
 
-import getPatentesValidation from './getPatentesValidation';
+import getPatentesValidation from './getPatentes.validation';
 
 export default {
   getPatentesValidation,

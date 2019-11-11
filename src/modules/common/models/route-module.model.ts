@@ -29,15 +29,13 @@ export default abstract class RouteModule {
    * @param middlewares The middlewares to appliedo to route
    * @param handler The final handler to execute on route
    */
-  public addRoute(routePath: string, httpVerb: HttpVerbs, validation: ISchemaValidation, middlewares: any[],
-                  handler: any, pRequiredAuthorization: boolean): void {
-                    
+  public addRoute(routePath: string, httpVerb: HttpVerbs, validation: ISchemaValidation,
+                  handler: any): void {
     // all routes must have the reqResponseMiddleware to be run at the beggining
     // middlewares.unshift(reqResponseMiddleware);
 
     this.router.route(routePath)[httpVerb](
       validate(validation),
-      middlewares,
       handler,
     );
   }

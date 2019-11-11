@@ -1,14 +1,15 @@
 /**
  * Filename: calendario.controller.ts
- * Author: 
+ * Author:
  * Date: 04/10/2019
  * Description: Controller File for all Calendario actions
  */
 
 import { NextFunction, Request, Response } from 'express';
 
+import { ErrorResponse, SuccessResponse } from '../../common/utils';
 import resenaHelper from '../helper';
-import { SuccessResponse, ErrorResponse } from '../../common/utils';
+
 export default class ResenaController {
   /**
    * Calls method to gets the information about ofices rooms,
@@ -17,33 +18,30 @@ export default class ResenaController {
    * @param {Response} res
    * @param {NextFunction} next
    */
-  public static async getMision(req: Request, res: Response, next: NextFunction)
-  {
-    try {
-      const result = await resenaHelper.getMision();
+  public static async getMision(req: Request, res: Response, next: NextFunction) {
+    resenaHelper.getMision().then((result) => {
       return SuccessResponse(res, result);
-    } catch (error) {
-      return ErrorResponse(res, error);
-    }
+    })
+    .catch((err) => {
+      return ErrorResponse(res, err);
+    });
   }
 
-  public static async getVision(req: Request, res: Response, next: NextFunction)
-  {
-    try {
-      const result = await resenaHelper.getVision();
+  public static async getVision(req: Request, res: Response, next: NextFunction) {
+    resenaHelper.getVision().then((result) => {
       return SuccessResponse(res, result);
-    } catch (error) {
-      return ErrorResponse(res, error);
-    }
+    })
+    .catch((err) => {
+      return ErrorResponse(res, err);
+    });
   }
 
-  public static async getResena(req: Request, res: Response, next: NextFunction)
-  {
-    try {
-      const result = await resenaHelper.getResena();
+  public static async getResena(req: Request, res: Response, next: NextFunction) {
+    resenaHelper.getResena().then((result) => {
       return SuccessResponse(res, result);
-    } catch (error) {
-      return ErrorResponse(res, error);
-    }
+    })
+    .catch((err) => {
+      return ErrorResponse(res, err);
+    });
   }
 }

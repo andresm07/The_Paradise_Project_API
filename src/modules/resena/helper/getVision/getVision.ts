@@ -1,22 +1,32 @@
 /**
  * Filename: deleteEvent.helper.ts
- * Author: 
+ * Author:
  * Date: 05/10/2019
- * Description: Get Rooms helper Function
+ * Description: Get Vision helper Function
  */
+import { clientConnect } from './../../../common/mongoDB/conection';
+const NOSOTROS = 'Nosotros';
 
-
-/**
- * Access to google api to get all rooms
- * @param auth The auth data for access to google api
- */
 const getVision = async () => {
-    try {
-      // aquí va el llamado a la BD
-      return null;
-    } catch(err) {
-      throw([err, 400]); //TODO
-    }
-  };
-  
-  export default getVision;
+  try {
+    return new Promise((resolve, reject) => {
+      clientConnect().then((client: any) => {
+        const data = client.db('WebParaiso');
+        const col = data.collection(NOSOTROS);
+        col.find({}).toArray((err, items) => {
+          if (err) {
+            reject(err);
+          }
+          resolve({ info: items[0].vision });
+        });
+      })
+      .catch((err) => {
+        reject(err);
+      });
+    });
+  } catch (error) {
+    throw([error, 400]);
+  }
+};
+
+export default getVision;

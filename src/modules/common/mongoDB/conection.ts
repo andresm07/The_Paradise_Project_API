@@ -1,34 +1,23 @@
-import { MongoCliente, ObjectID } from 'mongodb';
-const dbname = 'WebParaiso';
-const url =
-'mongodb://kristalduran:kristalduran@webparaiso-fv9eu.mongodb.net/WebParaiso';
-const mongoOptions = { useNewUrlParser : true };
+import { MongoClient, objectID } from 'mongodb';
 
+const url =
+'mongodb+srv://kristalduran:kristalduran@webparaiso-fv9eu.mongodb.net/WebParaiso';
+const mongoOptions = { useNewUrlParser : true };
 const state = {
   db : null,
 };
 
-export const conect = (cb) => {
-  if (state.db) {
-    cb();
-  } else {
-    MongoCliente.connect(url, mongoOptions, (err, cliente) => {
+export const clientConnect = async () => {
+  return new Promise((resolve, reject) => {
+    MongoClient.connect(url, mongoOptions, (err, client) => {
       if (err) {
-        console.log(err);
-        cb(err);
-      } else {
-        console.log('ok');
-        state.db = cliente.db(dbname);
-        cb();
+        reject(err);
       }
+      resolve(client);
     });
-  }
+  });
 };
 
-export const getPrimaryKey = (id) => {
-  return ObjectID(id);
-};
-
-export const getDB: any = () => {
+export const getDB = () => {
   return state.db;
 };

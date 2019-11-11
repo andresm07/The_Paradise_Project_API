@@ -1,14 +1,15 @@
 /**
  * Filename: calendario.controller.ts
- * Author: 
+ * Author:
  * Date: 04/10/2019
  * Description: Controller File for all Calendario actions
  */
 
 import { NextFunction, Request, Response } from 'express';
 
+import { ErrorResponse, SuccessResponse } from '../../common/utils';
 import atractivosHelper from '../helper';
-import { SuccessResponse, ErrorResponse } from '../../common/utils';
+
 export default class AtractivosController {
   /**
    * Calls method to gets the information about ofices rooms,
@@ -17,35 +18,33 @@ export default class AtractivosController {
    * @param {Response} res
    * @param {NextFunction} next
    */
-  public static async getDistritos(req: Request, res: Response, next: NextFunction)
-  {
-    try {
-      const result = await atractivosHelper.getDistritos();
+  public static async getDistritos(req: Request, res: Response, next: NextFunction) {
+    atractivosHelper.getDistritos().then((result) => {
       return SuccessResponse(res, result);
-    } catch (error) {
-      return ErrorResponse(res, error);
-    }
+    })
+    .catch((err) => {
+      return ErrorResponse(res, err);
+    });
   }
 
-  public static async getLugares(req: Request, res: Response, next: NextFunction)
-  {
-    try {
-      // agregar parametro
-      const result = await atractivosHelper.getLugares();
+  public static async getLugares(req: Request, res: Response, next: NextFunction) {
+    const nameDistrito = req.body.nameDistrito;
+    atractivosHelper.getLugares(nameDistrito).then((result) => {
       return SuccessResponse(res, result);
-    } catch (error) {
-      return ErrorResponse(res, error);
-    }
+    })
+    .catch((err) => {
+      return ErrorResponse(res, err);
+    });
   }
 
-  public static async getLugaresxID(req: Request, res: Response, next: NextFunction)
-  {
-    try {
-      // agregar parametro
-      const result = await atractivosHelper.getLugaresxID();
+  public static async getLugaresxID(req: Request, res: Response, next: NextFunction) {
+    const nameDistrito = req.body.nameDistrito;
+    const namePlace = req.body.namePlace;
+    atractivosHelper.getLugaresxID(nameDistrito, namePlace).then((result) => {
       return SuccessResponse(res, result);
-    } catch (error) {
-      return ErrorResponse(res, error);
-    }
+    })
+    .catch((err) => {
+      return ErrorResponse(res, err);
+    });
   }
 }

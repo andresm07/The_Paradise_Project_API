@@ -5,7 +5,6 @@
  * Description: Main App File
  */
 
-import { Logger } from 'akore';
 import express, { Application, Router } from 'express';
 import { RouteModule } from './modules/common/models';
 import { convertToApiException,
@@ -35,7 +34,8 @@ export default class App {
   public serve(): void {
     this.configure();
     this.app.listen(this.port, () => {
-      Logger.getInstance().verbose(`server started on port: ${this.port}`);
+      // tslint:disable-next-line:no-console
+      console.log(`server started on port: ${this.port}`);
     });
   }
 

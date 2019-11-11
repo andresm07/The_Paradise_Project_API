@@ -1,6 +1,6 @@
 /**
  * Filename: event.route.ts
- * Author: 
+ * Author:
  * Date: 05/10/2019
  * Description: Room Route Module
  */
@@ -21,22 +21,22 @@ export default class Resena extends RouteModule {
    * Inits the base routes to be used on router module
    */
   public initBaseRoute(): void {
-    this.baseRoute = '/resena';
+    this.baseRoute = '/historia';
   }
 
   /**
    * Inits the api routes to be used on the router module
    */
   public initApiRoutes(): void {
+    this.addRoute('/mision', HttpVerbs.POST,
+                  Validations.getMisionValidation,
+                  ResenaController.getMision),
     this.addRoute('/resena', HttpVerbs.POST,
-                  Validations.getMisionValidation, [],
-                  ResenaController.getMision, false),
-    this.addRoute('/resena', HttpVerbs.POST,
-                  Validations.getResenaValidation, [],
-                  ResenaController.getResena, false),
-    this.addRoute('/resena', HttpVerbs.POST,
-                  Validations.getVisionValidation, [],
-                  ResenaController.getVision, false);
+                  Validations.getResenaValidation,
+                  ResenaController.getResena),
+    this.addRoute('/vision', HttpVerbs.POST,
+                  Validations.getVisionValidation,
+                  ResenaController.getVision);
   }
 
   /**

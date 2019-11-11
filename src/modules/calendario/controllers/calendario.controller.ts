@@ -1,14 +1,15 @@
 /**
  * Filename: calendario.controller.ts
- * Author: 
+ * Author:
  * Date: 04/10/2019
  * Description: Controller File for all Calendario actions
  */
 
 import { NextFunction, Request, Response } from 'express';
 
+import { ErrorResponse, SuccessResponse } from '../../common/utils';
 import calendarioHelper from '../helper';
-import { SuccessResponse, ErrorResponse } from '../../common/utils';
+
 export default class CalendarioController {
   /**
    * Calls method to gets the information about ofices rooms,
@@ -17,13 +18,12 @@ export default class CalendarioController {
    * @param {Response} res
    * @param {NextFunction} next
    */
-  public static async getCalendario(req: Request, res: Response, next: NextFunction)
-  {
-    try {
-      const result = await calendarioHelper.getEventos();
+  public static async getCalendario(req: Request, res: Response, next: NextFunction) {
+    calendarioHelper.getEventos().then((result) => {
       return SuccessResponse(res, result);
-    } catch (error) {
-      return ErrorResponse(res, error);
-    }
+    })
+    .catch((err) => {
+      return ErrorResponse(res, err);
+    });
   }
 }

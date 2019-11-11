@@ -17,9 +17,9 @@ import status from 'http-status';
 export const SuccessResponse = (
   res: Response,
   data: any,
-  code?: number
+  code?: number,
 ): Response => {
-  if (typeof code !== 'undefined'){
+  if (typeof code !== 'undefined') {
     res.statusCode = code;
   }
   return res.send(data);

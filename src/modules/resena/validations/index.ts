@@ -5,12 +5,12 @@
  * Description: Index file for Rooms Schema Validation
  */
 
-import getResenaValidation from './getResena.validations';
 import getMisionValidation from './getMision.validations';
+import getResenaValidation from './getResena.validations';
 import getVisionValidation from './getVision.validations';
 
 export default {
-  getVisionValidation,
   getMisionValidation,
   getResenaValidation,
+  getVisionValidation,
 };

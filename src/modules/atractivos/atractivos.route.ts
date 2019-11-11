@@ -1,6 +1,6 @@
 /**
  * Filename: event.route.ts
- * Author: 
+ * Author:
  * Date: 05/10/2019
  * Description: Room Route Module
  */
@@ -21,22 +21,22 @@ export default class Atractivos extends RouteModule {
    * Inits the base routes to be used on router module
    */
   public initBaseRoute(): void {
-    this.baseRoute = '/atractivos';
+    this.baseRoute = '/atractivo';
   }
 
   /**
    * Inits the api routes to be used on the router module
    */
   public initApiRoutes(): void {
-    this.addRoute('/atractivos', HttpVerbs.POST,
-                  Validations.getDistritosValidation, [],
-                  AtractivosController.getDistritos, false),
-    this.addRoute('/atractivos', HttpVerbs.POST,
-                  Validations.getLugaresValidation, [],
-                  AtractivosController.getLugares, false),
-    this.addRoute('/atractivos', HttpVerbs.POST,
-                  Validations.getLugaresxIDValidation, [],
-                  AtractivosController.getLugaresxID, false);
+    this.addRoute('/distritos', HttpVerbs.POST,
+                  Validations.getDistritosValidation,
+                  AtractivosController.getDistritos),
+    this.addRoute('/distrito', HttpVerbs.POST,
+                  Validations.getLugaresValidation,
+                  AtractivosController.getLugares),
+    this.addRoute('/place', HttpVerbs.POST,
+                  Validations.getLugaresxIDValidation,
+                  AtractivosController.getLugaresxID);
   }
 
   /**
