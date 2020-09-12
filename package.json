@@ -88,7 +88,7 @@
     "mongodb": "^3.2.5",
     "morgan": "1.9.0",
     "node-cache": "4.2.0",
-    "node-fetch": "2.3.0",
+    "node-fetch": "2.6.1",
     "node-rsa": "1.0.2",
     "osascript": "1.2.0",
     "uuid": "3.3.2"
